@@ -7,11 +7,11 @@ public class AffichageInverse {
 	public static void main(String[] args) {
 		int[] array = { 1, 15, -3, 0, 8, 7, 4, -2, 28, 7, -1, 17, 2, 3, 0, 14, -4 };
 		
-		// Afficher l'ensemble des éléments du tableau grâce à une boucle
+		// Afficher l'ensemble des ï¿½lï¿½ments du tableau grï¿½ce ï¿½ une boucle
 		AffichageInverse.elementArray(array);
-		// Afficher l'ensemble des éléments du tableau inversé
+		// Afficher l'ensemble des ï¿½lï¿½ments du tableau inversï¿½
 		AffichageInverse.elementArrayInverse(array);
-		// Créer un tableau arrayCopy et copier tous les éléments de array dans arrayCopy
+		// Crï¿½er un tableau arrayCopy et copier tous les ï¿½lï¿½ments de array dans arrayCopy
 		AffichageInverse.copierUnTableau(array);
 	}
 	
@@ -21,9 +21,9 @@ public class AffichageInverse {
 		}
 	}
 	
-	private static void elementArrayInverse(int[] array) {
+	public static void elementArrayInverse(int[] array) {
 		for(int i =  array.length - 1; i >= 0; i--) {
-			System.out.println("element de array inversés " + array[i]);
+			System.out.print(array[i] + " ");
 		}
 	}
 	

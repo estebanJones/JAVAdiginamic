@@ -1,5 +1,6 @@
 package fr.algorithmie;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class InteractifStockageNombre {
@@ -14,31 +15,30 @@ public class InteractifStockageNombre {
 		Scanner scan = new Scanner(System.in);
 		int str = scan.nextInt();
 		int[] tableau = new int[1];
-		int[] array = new int[0];
+		int[] nouveauTableau = new int[1];
 		int index = 0;
-		
 		while(!String.valueOf(str).equalsIgnoreCase("X")) {
-			InteractifStockageNombre.showOptions();
-			scan = new Scanner(System.in);
-			
-			if(str == 1) {
-				System.out.println("Ajouter un nombre");
-				scan = new Scanner(System.in);
+			if (str == 1) {
+				System.out.println("Choisir un nombre");
+				int nombreChoisi = scan.nextInt();
+
 				if(index >= tableau.length) {
-					array = new int[index + 1];
-					array[index] = tableau[0];
-				
+					nouveauTableau = Arrays.copyOf(tableau, (tableau.length + 1));
+					tableau = nouveauTableau;
+					nouveauTableau[index] = nombreChoisi;
 				} else {
-					tableau[index] = str;
+					nouveauTableau[0] = nombreChoisi;
+					tableau = nouveauTableau;
 				}
-				index++;					
-			} 
-			else if (str == 2) {
-				System.out.println("Voici les nombres rentr�s");
-				for(int i = 0; i < array.length; i++) {
-					System.out.print(array[i] + " ");
-				}
+				index++;
 			}
+			else if(String.valueOf(str).equalsIgnoreCase("2")) {
+				// le dernier element rentré sera le premier element du tableau
+				AffichageInverse.elementArrayInverse(nouveauTableau);
+			}
+			System.out.println();
+			InteractifStockageNombre.showOptions();
+			// ré initialise la chaine de caractère
 			str = scan.nextInt();
 		}
 		
@@ -49,5 +49,10 @@ public class InteractifStockageNombre {
 		System.out.println("Apuuyer sur 1 -> Ajouter un nombre !");
 		System.out.println("Apuuyer sur 2 -> Afficher les nombres existants !");
 		System.out.println("Apuuyer sur X -> Quitter");
+	}
+
+	private static void messageScanner(String message) {
+		System.out.println(message);
+		Scanner scan = new Scanner(System.in);
 	}
 }
